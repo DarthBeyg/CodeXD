@@ -4,7 +4,7 @@ export default a;                 // npm init -y (for packagr.json file)
 const abc = "abc";                // npm install inquirer (to get input from user in terminal )
                // For all of them to work configure in tsconfig file:  "target" : "ES2020" &&  "module" : "NodeNext"                                             
 let array = [1, 2, 3];
-
+ //in package.json add :  1 "type": "module",   2 "bin":"index.js", after main .
 const obj = {
   name: "John",
 };
