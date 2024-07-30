@@ -29,7 +29,15 @@ function product(num1, num2) {
 function division(num1, num2) {
     return num1 / num2;
 }
-if (questions.operator == "+") {
+questions.num1 = parseFloat(questions.num1.replace(/,/g, ""));
+questions.num2 = parseFloat(questions.num2.replace(/,/g, ""));
+if (isNaN(questions.num1)) {
+    console.log("Invalid number input");
+}
+else if (isNaN(questions.num2)) {
+    console.log("Invalid number input");
+}
+else if (questions.operator == "+") {
     console.log("Sum of two given numbers:", sum(questions.num1, questions.num2));
 }
 else if (questions.operator == "-") {
@@ -40,7 +48,4 @@ else if (questions.operator == "*") {
 }
 else if (questions.operator == "/") {
     console.log("division of two given numbers:", division(questions.num1, questions.num2));
-}
-else {
-    console.log("Invalid Operator");
 }
