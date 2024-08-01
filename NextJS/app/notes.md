@@ -5,4 +5,4 @@ page.tsx's main tag contains all the current content of app. remove to add your 
 npm i -g vercel
 vercel login(with github)
 command => vercel 
-
+to have custom name on tab of an explorer goto layout.tsx and on line 5 type it in "title"'s value
