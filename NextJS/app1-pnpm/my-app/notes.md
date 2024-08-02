@@ -8,6 +8,9 @@ layout manipulation to tweak design
 creating different pages from app routing (page routing is old and obsolete)
 routes and nested routes
 layouts and nested layouts (different layouts for different routes)
-group route can have a shared layout 
+group route can have a shared layout (SettingsRoute) deal in group routes
 group route parent folder cant have page.tsx file rather have layout.tsx because it is not a page itself rather
 it allows different pages to be in a group so they can have shared layout
+Dynamic routes can be made to ssg static site generation. seo can be done on ssg as content is deployed on a server
+to optimise and simple dynamic routes can't be because they are deployed on request [Blog] deals with dynamic routes
++> rfce for react component
