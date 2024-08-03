@@ -14,3 +14,4 @@ it allows different pages to be in a group so they can have shared layout
 Dynamic routes can be made to ssg static site generation. seo can be done on ssg as content is deployed on a server
 to optimise and simple dynamic routes can't be because they are deployed on request [Blog] deals with dynamic routes
 +> rfce for react component
+somehow in dynamic routes naming [id] is important instead of [slug]
