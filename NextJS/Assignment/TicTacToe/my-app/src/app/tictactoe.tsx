@@ -3,13 +3,14 @@
 import { useState } from "react";
 
 const TicTacToe = () => {
-  const [board, setBoard] = useState<string[]>(Array(9).fill(""));
-  const [turn, setTurn] = useState<string>("X");
-  const [winner, setWinner] = useState<string | null>(null);
-  const [winningCells, setWinningCells] = useState<number[]>([]);
+  const [board, setBoard] = useState<string[]>(Array(9).fill(""));// State to store the board, initialized with 9 empty strings
+  const [turn, setTurn] = useState<string>("X"); // State to store the current player's turn, starting with "X"
+  const [winner, setWinner] = useState<string | null>(null); // State to store the winner, initially null
+  const [winningCells, setWinningCells] = useState<number[]>([]);// State to store the winning cells, initially an empty array
 
-  const checkWinner = (board: string[]): string | null => {
+  const checkWinner = (board: string[]): string | null => {// Function to check if there's a winner
     const winningCombinations = [
+      // Array of all possible winning combinations
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -20,38 +21,40 @@ const TicTacToe = () => {
       [2, 4, 6],
     ];
 
-    for (const combo of winningCombinations) {
-      const [a, b, c] = combo;
+    for (const combo of winningCombinations) {// Loop through each winning combination
+      const [a, b, c] = combo; // Destructure the indices of the winning combination
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        setWinningCells(combo);
-        return board[a];
+  //Check if all three cells in the combination have the same non-empty value    
+        setWinningCells(combo);// Set the winning cells
+        return board[a];// Return the winner ("X" or "O")
       }
     }
 
-    return null;
+    return null;// Return null if there's no winner
   };
 
   const handleClick = (index: number) => {
-    if (winner || board[index] !== "") return;
+    // Function to handle a cell click
+    if (winner || board[index] !== "") return; // If there's already a winner or the cell is not empty, do nothing
 
-    const newBoard = [...board];
-    newBoard[index] = turn;
-    setBoard(newBoard);
+    const newBoard = [...board];// Create a copy of the board
+    newBoard[index] = turn;// Set the clicked cell to the current player's turn
+    setBoard(newBoard);// Update the board state
 
-    const winningPlayer = checkWinner(newBoard);
+    const winningPlayer = checkWinner(newBoard);// Check if there's a winner with the new board
     if (winningPlayer) {
-      setWinner(winningPlayer);
+      setWinner(winningPlayer);// If there's a winner, update the winner state
       return;
     }
 
-    setTurn(turn === "X" ? "O" : "X");
+    setTurn(turn === "X" ? "O" : "X"); // Otherwise, switch the turn to the other player
   };
 
-  const handleReset = () => {
-    setBoard(Array(9).fill(""));
-    setTurn("X");
-    setWinner(null);
-    setWinningCells([]);
+  const handleReset = () => { // Function to reset the game
+    setBoard(Array(9).fill("")); // Reset the board to 9 empty strings
+    setTurn("X"); // Set the turn back to "X"
+    setWinner(null); // Clear the winner
+    setWinningCells([]); // Clear the winning cells
   };
 
   return (
