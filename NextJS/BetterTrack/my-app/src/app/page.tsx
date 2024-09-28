@@ -120,7 +120,7 @@ export default function TimeTracker() {
             animation: subtle-shake 0.5s infinite;
           }
         `}</style>
-        <h1 className="text-4xl font-bold text-white text-center mb-8">Time and Track Activities</h1>
+        <h1 className="text-4xl font-bold text-white text-center mb-8">Time & Track Your Activities</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {activities.map(activity => (
             <Card 
