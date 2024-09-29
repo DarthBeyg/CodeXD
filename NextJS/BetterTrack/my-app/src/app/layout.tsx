@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SpeedInsights } from "@vercel/speed-insights/next"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
