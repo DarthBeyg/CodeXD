@@ -9,19 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-tooltip": "^1.1.2",
-    "@vercel/speed-insights": "^1.0.12",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.446.0",
+    "@sanity/image-url": "1",
+    "@sanity/vision": "3",
     "next": "14.2.13",
+    "next-sanity": "9",
     "react": "^18",
     "react-dom": "^18",
-    "react-toastify": "^10.0.5",
-    "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7",
-    "vercel": "^37.6.0"
+    "sanity": "3",
+    "styled-components": "6"
   },
   "devDependencies": {
     "@types/node": "^20",
