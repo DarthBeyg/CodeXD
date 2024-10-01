@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PlusCircle, Play, Pause, StopCircle, Edit2, Bell, BellOff } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,8 +8,6 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 interface Activity {
   id: number
@@ -19,49 +17,79 @@ interface Activity {
   color: string
   alertEnabled: boolean
   alertTime: number
+  lastUpdate: number
 }
 
-const categoryColors = {
-  "Entertainment": "from-yellow-300 to-red-500",
+interface categoryColors {
+  [key: string]: string;
+  Entertainment: string;
+  Learning: string;
+  Working: string;
+  "Social Media": string;
+  default: string;
+}
+
+const categoryColors: { [key: string]: string } = {
+  "Entertainment": "from-pink-400 to-red-400",
   "Learning": "from-blue-400 to-indigo-400",
   "Working": "from-green-400 to-teal-400",
-  "Social Media": "from-pink-300 to-red-400",
+  "Social Media": "from-yellow-400 to-orange-400",
   "default": "from-purple-400 to-pink-400"
 }
 
 export default function TimeTracker() {
   const [activities, setActivities] = useState<Activity[]>([
-    { id: 1, name: "Entertainment", time: 0, isRunning: false, color: categoryColors["Entertainment"], alertEnabled: false, alertTime: 15 * 60 },
-    { id: 2, name: "Learning", time: 0, isRunning: false, color: categoryColors["Learning"], alertEnabled: false, alertTime: 15 * 60 },
-    { id: 3, name: "Working", time: 0, isRunning: false, color: categoryColors["Working"], alertEnabled: false, alertTime: 15 * 60 },
-    { id: 4, name: "Social Media", time: 0, isRunning: false, color: categoryColors["Social Media"], alertEnabled: false, alertTime: 15 * 60 },
+    { id: 1, name: "Entertainment", time: 0, isRunning: false, color: categoryColors["Entertainment"], alertEnabled: false, alertTime: 15 * 60, lastUpdate: 0 },
+    { id: 2, name: "Learning", time: 0, isRunning: false, color: categoryColors["Learning"], alertEnabled: false, alertTime: 15 * 60, lastUpdate: 0 },
+    { id: 3, name: "Working", time: 0, isRunning: false, color: categoryColors["Working"], alertEnabled: false, alertTime: 15 * 60, lastUpdate: 0 },
+    { id: 4, name: "Social Media", time: 0, isRunning: false, color: categoryColors["Social Media"], alertEnabled: false, alertTime: 15 * 60, lastUpdate: 0 },
   ])
 
+  const animationFrameRef = useRef<number>()
+
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateTimers = (timestamp: number) => {
       setActivities(prevActivities =>
         prevActivities.map(activity => {
           if (activity.isRunning) {
-            const newTime = activity.time + 1
+            const elapsed = timestamp - activity.lastUpdate
+            const newTime = activity.time + elapsed / 1000
+
             if (activity.alertEnabled && newTime >= activity.alertTime) {
               toast.info(`Alert: You've been ${activity.name} for ${formatTime(activity.alertTime)}!`)
-              return { ...activity, time: newTime, alertEnabled: false }
+              return { ...activity, time: newTime, alertEnabled: false, lastUpdate: timestamp }
             }
-            return { ...activity, time: newTime }
+
+            return { ...activity, time: newTime, lastUpdate: timestamp }
           }
           return activity
         })
       )
-    }, 1000)
 
-    return () => clearInterval(interval)
+      animationFrameRef.current = requestAnimationFrame(updateTimers)
+    }
+
+    animationFrameRef.current = requestAnimationFrame(updateTimers)
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+    }
   }, [])
 
   const toggleTimer = (id: number) => {
+    const now = performance.now()
     setActivities(prevActivities =>
       prevActivities.map(activity => {
         if (activity.id === id) {
-          return { ...activity, isRunning: !activity.isRunning }
+          if (!activity.isRunning) {
+            // Starting the timer
+            return { ...activity, isRunning: true, lastUpdate: now }
+          } else {
+            // Stopping the timer
+            return { ...activity, isRunning: false }
+          }
         } else if (activity.isRunning) {
           // Pause any other running timers
           return { ...activity, isRunning: false }
@@ -74,7 +102,7 @@ export default function TimeTracker() {
   const resetTimer = (id: number) => {
     setActivities(prevActivities =>
       prevActivities.map(activity =>
-        activity.id === id ? { ...activity, time: 0, isRunning: false } : activity
+        activity.id === id ? { ...activity, time: 0, isRunning: false, lastUpdate: 0 } : activity
       )
     )
   }
@@ -82,20 +110,24 @@ export default function TimeTracker() {
   const renameActivity = (id: number, newName: string) => {
     setActivities(prevActivities =>
       prevActivities.map(activity =>
-        activity.id === id ? { ...activity, name: newName, color: categoryColors[newName as keyof typeof categoryColors] || categoryColors.default } : activity
+        activity.id === id ? { 
+          ...activity, 
+          name: newName, 
+          color: (newName in categoryColors) ? categoryColors[newName] : categoryColors.default 
+        } : activity
       )
     )
   }
 
   const addNewActivity = () => {
     const newId = Math.max(...activities.map(a => a.id)) + 1
-    setActivities([...activities, { id: newId, name: "New Activity", time: 0, isRunning: false, color: categoryColors.default, alertEnabled: false, alertTime: 15 * 60 }])
+    setActivities([...activities, { id: newId, name: "New Activity", time: 0, isRunning: false, color: categoryColors.default, alertEnabled: false, alertTime: 15 * 60, lastUpdate: 0 }])
   }
 
   const toggleAlert = (id: number) => {
     setActivities(prevActivities =>
       prevActivities.map(activity =>
-        activity.id === id ? { ...activity, alertEnabled: !activity.alertEnabled, time: 0 } : activity
+        activity.id === id ? { ...activity, alertEnabled: !activity.alertEnabled } : activity
       )
     )
   }
@@ -103,7 +135,7 @@ export default function TimeTracker() {
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
     const minutes = Math.floor((seconds % 3600) / 60)
-    const remainingSeconds = seconds % 60
+    const remainingSeconds = Math.floor(seconds % 60)
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
   }
 
@@ -122,7 +154,7 @@ export default function TimeTracker() {
             animation: subtle-shake 0.5s infinite;
           }
         `}</style>
-        <h1 className="text-4xl font-bold text-white text-center mb-8">Time & Track Your Activities</h1>
+        <h1 className="text-4xl font-bold text-white text-center mb-8">Activity Time Tracker</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {activities.map(activity => (
             <Card 
