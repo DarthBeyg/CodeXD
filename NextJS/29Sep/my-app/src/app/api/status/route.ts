@@ -12,5 +12,5 @@
 import { NextResponse } from "next/server";
 export async function GET() {
    // return new Response("Hello, Next.js!");
-   return NextResponse.json({ status: 200, message: "Hello, Next.js!" });
+   return NextResponse.json({ status: "OK", message: "Hello, Next.js!" });
 }
