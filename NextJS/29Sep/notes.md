@@ -4,7 +4,12 @@ in postman there's an base url then there are endpoints
 => route handlers in nextJs
 have to make api folder in app folder in nextjs project
 in api folder make status folder and then make a file route.ts
-to master url search params : google and click mdn web docs
+to master url search params : google  mdn web docs *
+each method like GET,POST,PUT will have their specific functions exported from 
+specific api routes. you can check their syntax in route.ts files
+2:45:00 from utube video of sir for urlsearchparams.
+
+
                           forms
 react-hook-form.com for studying forms
 shadcn works with react hook forms

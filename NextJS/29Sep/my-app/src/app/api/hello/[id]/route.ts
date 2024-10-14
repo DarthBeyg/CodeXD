@@ -23,7 +23,7 @@ export async function GET(
   console.log("🚀 ~ GET ~ params:", params.id);
   const currentBook = books.find((book) => book.id == params.id);
   return NextResponse.json({
-    message: "Hello from server hello dynamic route",
+    message: "Hello from server, say hello to dynamic route",
     currentBook,
   });
 }
