@@ -13,24 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+
+const formSchema = z.object({ // Define the shape of the form data.
+  email: z.string().email(),  // Email validation
+  password: z.string().min(6),// Password validation
 });
 
-export default function Home() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
+export default function Home() { // Functional component Home that renders the login form.
+  const form = useForm<z.infer<typeof formSchema>>({ // Define the form using the useForm hook.
+    resolver: zodResolver(formSchema), // Use the zodResolver to validate the form data.
+    defaultValues: { // Set the default values for the form.
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => { // Define the onSubmit function.
     try {
       // API call to login
-      await fetch("/api/login", {
+      await fetch("/api/login", { // Send a POST request to the login API endpoint.
         method: "POST",
         body: JSON.stringify(data),
         cache: "no-store",
@@ -46,23 +47,23 @@ export default function Home() {
         <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight lg:text-2xl text-center">
           Login
         </h1>
-        <Form {...form}>
+        <Form {...form}> {/* Render the form. */}
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex gap-5 w-full flex-col py-5"
+            onSubmit={form.handleSubmit(onSubmit)} // Handle form submission.
+            className="flex gap-5 w-full flex-col py-5" 
           >
-            <FormField
+            <FormField // Render the form fields.
               name="email"
-              control={form.control}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
+              control={form.control} // Pass the form control to the FormField.
+              render={({ field }) => ( // Render the form field.
+                <FormItem> 
+                  <FormLabel>Email</FormLabel>  {/* Label for the form field. */}
                   <FormControl>
                     <Input
                       placeholder="Email"
                       type="email"
                       className="w-full"
-                      {...field}
+                      {...field}  //Pass the form field to the Input component. 
                     />
                   </FormControl>
                   <FormMessage />
@@ -71,8 +72,8 @@ export default function Home() {
             />
             <FormField
               name="password"
-              control={form.control}
-              render={({ field }) => (
+              control={form.control} // Pass the form control to the FormField.
+              render={({ field }) => ( // Render the form field.
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
@@ -80,7 +81,7 @@ export default function Home() {
                       placeholder="Password"
                       type="password"
                       className="w-full"
-                      {...field}
+                      {...field} // Pass the form field to the Input component.
                     />
                   </FormControl>
                   <FormMessage />
@@ -91,7 +92,7 @@ export default function Home() {
               href={"/register"}
               className="text-blue-500 text-sm text-right"
             >
-              Don&apos;t have account? Register
+              Don&apos;t have account? Register here..
             </Link>
             <Button type="submit">Login</Button>
           </form>
