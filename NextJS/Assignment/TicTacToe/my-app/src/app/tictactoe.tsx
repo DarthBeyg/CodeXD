@@ -90,7 +90,7 @@ const TicTacToe = () => {
       {winner && (
         <div className="absolute top-0 left-0 right-0 pointer-events-none">
           <div className="flex justify-center p-4">
-             <div className="text-5xl font-bold text-white animate-pulse">
+             <div className="text-5xl font-bold text-orange-500 animate-pulse">
                  🎉 Congratulations {winner}! 🎉
              </div>
           </div>
