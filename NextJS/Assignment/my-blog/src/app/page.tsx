@@ -1,9 +1,13 @@
-import { Raleway, Nunito, Roboto_Mono, } from 'next/font/google'
-import Image from 'next/image'
-import C from '../components/logos/c.svg'
-import Nextjs from '../components/logos/nextjs.svg'
-import Python from '../components/logos/python.svg'
-import React from '../components/logos/react.svg'
+import { Raleway, Nunito, Roboto_Mono, } from 'next/font/google' // Importing fonts
+import Image from 'next/image' // Importing Image tag
+import C from '../components/logos/c.svg' // Importing C logo
+import Nextjs from '../components/logos/nextjs.svg' // Importing Nextjs logo
+import Python from '../components/logos/python.svg' // Importing Python logo
+import ReactIcon from '../components/logos/react.svg' // Importing React logo
+import Node from '../components/logos/nodejs.svg' // Importing Nodejs logo
+import TailwindL from '../components/logos/tailwind.svg' // Importing Tailwind logo
+import TypescriptL from '../components/logos/typescript.svg' // Importing Typescript logo
+import Logo from '../components/logos/html5.svg' // Importing Html logo
 
 const font = Nunito({
   weight: ['400',],
@@ -53,10 +57,18 @@ const fontB = Roboto_Mono({
               </div>
               <div className="flex flex-col items-end"> {/* Added flex column container */}
                 <Image src='/pfp/1.jpg' alt="Profile Picture" width={450} height={450} className="rounded-full" />
-                <C width={50} height={50} className="mt-4" /> 
-                <Nextjs width={50} height={50} />
-                <Python width={50} height={50} />
-                <React width={50} height={50} />
+                <div className="flex flex-row gap-8 mt-8 mx-20"> {/* New container for logos */}
+                  <Image src={C} alt="logo" width={50} height={50} /> 
+                  <Image src={Python} alt="logo" width={50} height={50} />
+                  <Image src={Nextjs} alt="logo" width={50} height={50} />
+                  <Image src={ReactIcon} alt="logo" width={50} height={50} />
+                </div>
+                <div className="flex flex-row gap-8 mt-10 mx-20"> {/* New container for logos */}
+                  <Image src={Node} alt="logo" width={50} height={50} /> 
+                  <Image src={TailwindL} alt="logo" width={50} height={50} />
+                  <Image src={TypescriptL} alt="logo" width={50} height={50} />
+                  <Image src={Logo} alt="logo" width={50} height={50} />
+                </div>
               </div>   
                         
             </div>                                  
