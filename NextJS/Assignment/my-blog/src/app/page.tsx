@@ -22,7 +22,7 @@ const fontB = Roboto_Mono({
   subsets: ['latin'],
 })
 
-  export default function Home() { 
+export default function Home() { 
     return (
       <div className={`${font.className} bg-[rgb(50,241,248)] min-h-screen text-2xl`}> 
         <header className=" p-4 flex flex-row justify-between items-center">
