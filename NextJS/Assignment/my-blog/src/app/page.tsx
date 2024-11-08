@@ -7,7 +7,7 @@ import ReactIcon from '../components/logos/react.svg' // Importing React logo
 import Node from '../components/logos/nodejs.svg' // Importing Nodejs logo
 import TailwindL from '../components/logos/tailwind.svg' // Importing Tailwind logo
 import TypescriptL from '../components/logos/typescript.svg' // Importing Typescript logo
-import Logo from '../components/logos/html5.svg' // Importing Logo
+import Logo from '../components/logos/html5.svg' // Importing Html Logo
 
 const font = Nunito({ 
   weight: ['400',],
