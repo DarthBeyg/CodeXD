@@ -50,11 +50,11 @@ const fontB = Roboto_Mono({
                 <p>Here's what to expect from this blog:</p>  
                 <p className={`${fontB.className} text-2xl text-black`}>
                 --Tales from the trenches of software development <br />
-               --My trading adventures (wins and face-palms included) <br />
-               --Tech deep-dives that won't put you to sleep <br />
-               --Travel stories that somehow connect back to tech and trading <br />
-               --Life hacks from someone who juggles multiple passions <br />            
-               </p><br />
+                --My trading adventures (wins and face-palms included) <br />
+                --Tech deep-dives that won't put you to sleep <br />
+                --Travel stories that somehow connect back to tech and trading <br />
+                --Life hacks from someone who juggles multiple passions <br />            
+                </p><br />
               </div>
               <div className="flex flex-col items-end"> {/* Added flex column container */}
                 <Image src='/pfp/1.jpg' alt="Profile Picture" width={450} height={450} className="rounded-full motion-preset-pop motion-duration-2000 motion-delay-200" />
