@@ -1,7 +1,7 @@
 import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client } from "../../sanity/lib/client";
+import  client  from "../../sanity/lib/client";
 
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
@@ -20,24 +20,25 @@ export default async function PostPage({
   params: { slug: string };
 }) {
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
-  const postImageUrl = post.image
-    ? urlFor(post.image)?.width(550).height(310).url()
+  const postImageUrl = post.mainImage
+    ? urlFor(post.mainImage)?.width(720).height(720).url()
     : null;
 
   return (
-    <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
+    
+    <main className="mx-auto gap-5 bg-[#e0f2f7] min-h-screen flex flex-col">
       {postImageUrl && (
         <img
           src={postImageUrl}
           alt={post.title}
-          className="aspect-video rounded-xl"
-          width="550"
-          height="310"
+          className="mx-auto my-4 rounded-3xl"
+          style={{ width: '600px', height: '480px' }}
         />
       )}
-      <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
-      <div className="prose">
+      <h1 className="text-4xl p-4 gap-4 mx-auto font-bold mb-8">{post.title}</h1>
+      <div className="mx-28 text-justify text-2xl">
         <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
+        <br />
         {Array.isArray(post.body) && <PortableText value={post.body} />}
       </div>
     </main>

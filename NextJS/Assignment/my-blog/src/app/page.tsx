@@ -9,6 +9,8 @@ import TailwindL from '../components/logos/tailwind.svg' // Importing Tailwind l
 import TypescriptL from '../components/logos/typescript.svg' // Importing Typescript logo
 import Logo from '../components/logos/html5.svg' // Importing Html Logo
 import Illustration from '../components/illustrations/illustration.svg' // Importing Illustration
+import Recent from '../components/recent/Recent'
+
 
 
 const fontA = Raleway({
@@ -32,13 +34,13 @@ export default function Home() {
                   dive in the market charts as I am debugging production systems..
                  </h2>
                 </div>
-                <p className={`${fontB.className}  text-[#232946] text-justify`}>
+                <p className={`${fontB.className} motion-preset-confetti motion-duration-1000 motion-delay-950 text-[#232946] text-justify`}>
                   During the day, I craft digital solutions that make the businesses tick. By night, I'm analyzing market trends, hunting
                   for the next big tech opportunity, or planning my next adventure across the globe. Yeah, I'm that guy who gets equally 
                   excited about a perfectly executed trading strategy and a beautifully written piece of code.
                 </p> <br />
                 <p className={`${fontA.className} text-black font-medium motion-preset-pop motion-duration-500 motion-delay-350`}>Here's what to expect from this blog:</p>  
-                <p className={`${fontB.className} text-[#232946]`}>
+                <p className={`${fontB.className} motion-preset-confetti motion-duration-1000 motion-delay-950 text-[#232946]`}>
                 --Tales from the trenches of software development <br />
                 --My trading adventures (wins and face-palms included) <br />
                 --Tech deep-dives that won't put you to sleep <br />
@@ -66,11 +68,9 @@ export default function Home() {
                wanderlust! 🚀</p>            
           </section>
           <section>
-            <h2 className={`${fontA.className} text-xl md:text-2xl mb-4 text-[#232946]`}>Recent Posts</h2>
-            {/* Placeholder for recent posts */}
-            <p className={`${fontB.className} text-black `}>
-              (Coming soon!)
-            </p>
+            {/* <h2 className={`${fontA.className} text-xl md:text-2xl mb-4 text-[#232946]`}>Recent Posts</h2> */}
+            {/* Placeholder for recent posts */}           
+            <Recent posts={[]}/>            
           </section>
           <section className='flex justify-end mt-10'>
             <Image src={Illustration} alt="Illustration" width={500} height={300} className='motion-preset-slide-down motion-duration-550 motion-delay-500' />
