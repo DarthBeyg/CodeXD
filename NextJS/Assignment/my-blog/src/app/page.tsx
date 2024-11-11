@@ -21,8 +21,8 @@ const fontB = Roboto_Mono({
 })
 
 export default function Home() { 
-    return (
-      <div className={`bg-[#e0f2f7] min-h-screen text-2xl`}>         
+    return (            
+      <div className={`bg-[#e0f2f7] min-h-screen text-2xl`}>                 
         <main className="container mx-auto p-4 sm:p-8">
           <section className="mb-8">    
             <div className="flex flex-col md:flex-row items-start mb-4">
@@ -72,6 +72,6 @@ export default function Home() {
             </div>            
           </section>
         </main>         
-      </div>
+      </div>      
     );
   }

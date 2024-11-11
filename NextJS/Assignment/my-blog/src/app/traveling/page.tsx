@@ -5,6 +5,7 @@ import  client  from "../../sanity/lib/client"; // Import the Sanity client
 import imageUrlBuilder from '@sanity/image-url'; // Import the image URL builder
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"; // Import the SanityImageSource type
 
+
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)

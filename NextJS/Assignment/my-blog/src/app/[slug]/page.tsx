@@ -24,8 +24,7 @@ export default async function PostPage({
     ? urlFor(post.mainImage)?.width(720).height(720).url()
     : null;
 
-  return (
-    
+  return (    
     <main className="mx-auto gap-5 bg-[#e0f2f7] min-h-screen flex flex-col">
       {postImageUrl && (
         <img
