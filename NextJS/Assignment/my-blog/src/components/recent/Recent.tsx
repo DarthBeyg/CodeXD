@@ -9,7 +9,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types"; // Import
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)  
-]|order(publishedAt desc)[0...12]{_id, title, slug, "publishedAt": publishedAt, mainImage, "authorName": author->name}`;
+]|order(publishedAt desc)[0...3]{_id, title, slug, "publishedAt": publishedAt, mainImage, "authorName": author->name}`;
 
 const options = { next: { revalidate: 30 } };
 
@@ -31,12 +31,11 @@ const fontB = Roboto_Mono({
 
 export default async function IndexPage() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options); // Fetch posts
-  const recentPost = posts[0];
   return (
-    <main className="mx-auto bg-[#e0f2f7] min-h-screen md:p-10 p-4">
-      <ul className="flex flex-wrap gap-6 justify-center">
-        {recentPost && ( // Check if there is a recent post
-          <li key={recentPost._id} className="w-full sm:w-[450px] flex-shrink-0">
+    <main className="bg-[#e0f2f7] min-h-screen md:p-6">
+      <ul className="flex flex-wrap gap-6 justify-center mx-auto md:justify-start md:flex-row" style={{ maxWidth: '1200px' }}>
+        {posts.map((recentPost) => ( // Changed to map over the posts array
+          <li key={recentPost._id} className="w-full sm:w-[450px] md:w-[calc(100%/3-1rem)] flex-shrink-0">
             <Link href={`/${recentPost.slug.current}`}>
               <div className="flex flex-col justify-start md:h-full border bg-[#e5eef0] border-black rounded-lg p-2">
                 <h2 className={`text-xl p-2 ${fontA.className}`}>{recentPost.title}</h2>
@@ -64,7 +63,7 @@ export default async function IndexPage() {
               </div>
             </Link>
           </li>
-        )}
+        ))}
       </ul>
     </main>
   );

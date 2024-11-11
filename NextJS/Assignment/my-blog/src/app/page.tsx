@@ -8,9 +8,7 @@ import Node from '../components/logos/nodejs.svg' // Importing Nodejs logo
 import TailwindL from '../components/logos/tailwind.svg' // Importing Tailwind logo
 import TypescriptL from '../components/logos/typescript.svg' // Importing Typescript logo
 import Logo from '../components/logos/html5.svg' // Importing Html Logo
-import Illustration from '../components/illustrations/illustration.svg' // Importing Illustration
 import Recent from '../components/recent/Recent' // Importing Recent Post component
-
 
 
 const fontA = Raleway({
@@ -67,12 +65,11 @@ export default function Home() {
             <p className={`${fontA.className} w-full md:w-2/3 text-black font-medium motion-preset-pop motion-duration-500 motion-delay-200`}>Ready for some unique perspective? Let's explore where technology meets money then embraces 
                wanderlust! 🚀</p>            
           </section>
-          < section className='flex flex-col md:flex-row items-start'> {/* Added flex-row and items-start to align Recent and Image */}
-            <h2 className={`${fontA.className} text-xl font-semibold md:text-2xl mb-4 text-[#232946]`}>Recent Posts</h2>                      
-            <div className="flex flex-col p-5"> {/* Added flex-col to align Recent to the left */}
-              <Recent/>
-            </div>
-            <Image src={Illustration} alt="Illustration" width={500} height={300} className='motion-preset-slide-down motion-duration-550 motion-delay-500 ml-10' /> {/* Added ml-10 for spacing */}
+          < section className='flex flex-col items-center'> {/* Added flex-row and items-start to align Recent and Image */}
+            <h2 className={`${fontA.className} text-3xl font-bold whitespace-nowrap  text-[#232946]`}>Recent Posts</h2>                      
+            <div className="flex flex-wrap my-14 flex-row "> {/* Added flex-col to align Recent to the left */}
+              <Recent />
+            </div>            
           </section>
         </main>         
       </div>
