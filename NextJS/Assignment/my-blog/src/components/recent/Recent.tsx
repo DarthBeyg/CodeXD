@@ -31,21 +31,20 @@ const fontB = Roboto_Mono({
 export default async function IndexPage() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options); 
   return (
-    <main className="bg-[#e0f2f7] min-h-screen"> {/* Reduced padding */}
-      <ul className="flex flex-wrap justify-center mx-auto md:justify-evenly md:flex-row" style={{ maxWidth: '1500px' }}>
+    <main className="bg-[#e0f2f7] min-h-screen mt-8">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"> {/* Use grid for better responsiveness */}
         {posts.map((recentPost) => ( 
-          <li key={recentPost._id} className="w-full sm:w-[450px] md:w-[calc(100%/3-1rem)] flex-shrink-0 p-6"> {/* Increased padding to p-6 */}
+          <li key={recentPost._id} className="border bg-[#e5eef0] border-black rounded-lg p-4">
             <Link href={`/${recentPost.slug.current}`}>
-              <div className="flex flex-col justify-start border bg-[#e5eef0] border-black rounded-lg p-2">
+              <div className="flex flex-col">
                 <h2 className={`text-xl p-2 ${fontA.className}`}>{recentPost.title}</h2>
                 {recentPost.mainImage && (
-                  <div className="h-[250px] md:h-[200px]">
+                  <div className="relative h-[200px] md:h-[250px] overflow-hidden"> {/* Use relative and overflow-hidden */}
                     <Image
                       src={urlFor(recentPost.mainImage).url()} 
                       alt={recentPost.title}
-                      width={450} 
-                      height={300} 
-                      className="object-cover w-full h-full" 
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 )}
