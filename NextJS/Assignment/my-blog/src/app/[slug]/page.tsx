@@ -36,7 +36,7 @@ export default async function PostPage({
         />
       )}
       <h1 className="text-4xl p-4 gap-4 mx-auto font-bold mb-8">{post.title}</h1>
-      <div className="mx-28 text-justify text-2xl">
+      <div className="mx-4 md:mx-28 text-justify text-2xl">
         <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
         <br />
         {Array.isArray(post.body) && <PortableText value={post.body} />}
