@@ -25,7 +25,7 @@ export default async function PostPage({
     : null;
 
   return (    
-    <main className="mx-auto gap-5 bg-[#e0f2f7] min-h-screen flex flex-col">
+    <main className="mx-auto gap-5 bg-[#c6b291] min-h-screen flex flex-col">
       {postImageUrl && (
         <img
           src={postImageUrl}

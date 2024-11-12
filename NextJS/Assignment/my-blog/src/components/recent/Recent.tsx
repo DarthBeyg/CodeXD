@@ -31,13 +31,13 @@ const fontB = Roboto_Mono({
 export default async function IndexPage() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options); 
   return (
-    <main className="bg-[#e0f2f7] min-h-screen mt-8">
+    <main className="bg-[#c6b291] min-h-screen mt-8">
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"> {/* Use grid for better responsiveness */}
         {posts.map((recentPost) => ( 
           <li key={recentPost._id} className="border bg-[#e5eef0] border-black rounded-lg p-4">
             <Link href={`/${recentPost.slug.current}`}>
               <div className="flex flex-col">
-                <h2 className={`text-xl p-2 ${fontA.className}`}>{recentPost.title}</h2>
+                <h2 className={`text-xl font-semibold p-2 ${fontA.className}`}>{recentPost.title}</h2>
                 {recentPost.mainImage && (
                   <div className="relative h-[200px] md:h-[250px] overflow-hidden"> {/* Use relative and overflow-hidden */}
                     <Image

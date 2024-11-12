@@ -25,7 +25,7 @@ export default async function IndexPage() {
   const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options); // Fetch posts
 
   return (
-    <main className="mx-auto bg-[#e0f2f7] min-h-screen p-10">
+    <main className="mx-auto bg-[#c6b291] min-h-screen p-10">
       <ul className="flex flex-wrap gap-6 justify-center">
         {posts.map((post) => (
           <li key={post._id} className="w-[450px] flex-shrink-0">
