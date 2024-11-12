@@ -28,7 +28,7 @@ export default async function IndexPage() {
     <main className="mx-auto bg-[#c6b291] min-h-screen p-10">
       <ul className="flex flex-wrap gap-6 justify-center">
         {posts.map((post) => (
-          <li key={post._id} className="w-[450px] flex-shrink-0">
+          <li key={post._id} className="w-full sm:w-[450px] flex-shrink-0">
             <Link href={`/${post.slug.current}`}>
               <div className="flex flex-col justify-between h-full border bg-[#e5eef0] border-black rounded-lg overflow-hidden">
                 <h2 className="text-xl font-semibold p-4">{post.title}</h2>
