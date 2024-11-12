@@ -21,10 +21,8 @@ const fontB = Roboto_Mono({
 })
 
 export default function Home() { 
-    return (            
-                      
-        <main className=" bg-[#e0f2f7] min-h-screen text-2xl p-8">
-              
+    return (                                  
+        <main className=" bg-[#e0f2f7] min-h-screen text-2xl p-8">              
             <div className="flex flex-col md:flex-row items-start ">
               <div className="md:w-2/3">
                 <div className={`${fontA.className} text-justify mb-4`}>
