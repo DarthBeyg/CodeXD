@@ -14,3 +14,4 @@ a state of the rendering component for now. Only .push method is needed to push 
 Using postman the POST api pushes the data successfully and main page upon refreshing shows users.
 Now let's make a Ui to add users from frontend
 useState & useEffect for renderign. NextRequest & NextResponse for GET & POST api operations
+useForm from react hook forms for easier data handling through form
