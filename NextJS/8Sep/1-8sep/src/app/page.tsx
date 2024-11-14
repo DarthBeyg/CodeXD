@@ -3,14 +3,14 @@ import { useState, useEffect } from "react"
 
 
 export default function Home() {
-let [counter,setCounter]= useState(0)
+const [counter,setCounter]= useState(0)
 //let counter =0
 function increment(){
   setCounter(counter+1) 
   console.log(counter)
 }
 function decrement(){
- let decrementValue = counter -1
+ const decrementValue = counter -1
   setCounter(decrementValue)
   console.log(counter)
 }
