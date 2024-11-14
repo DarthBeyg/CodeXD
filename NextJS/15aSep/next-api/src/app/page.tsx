@@ -35,36 +35,16 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-400"> {/* Flex container for layout */}
-      <div className="flex-grow overflow-y-auto pb-16"> {/* Scrollable content */}
-      <div className="flex items-center justify-center"> {/* Centering table */}
-        <table className="table-auto border-collapse border border-gray-500 ">{/* Table styling */}
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="px-4 py-2 border border-gray-200 text-left">Name</th>
-              <th className="px-4 py-2 border border-gray-200 text-left">ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (   // Map the fetched data to table rows
-              <tr key={item.id}>     
-                <td className="px-4 py-2 border border-gray-200">{item.name}</td>  
-                <td className="px-4 py-2 border border-gray-200">{item.id}</td>     
-              </tr>
-            ))}
-          </tbody>
-        </table>
-       </div> 
-      </div>
-      
-        <div className="flex justify-start items-center p-10"> {/* Form styling */}
-          <form className="bg-slate-300 rounded-lg shadow-xl p-10 w-1/4" > {/* Form styling */}
+    <div className="flex flex-col min-h-screen bg-slate-400">
+      <div className="flex justify-center items-start space-x-8 pt-10 px-4">
+        <div className="w-96">
+          <form className="bg-slate-300 rounded-lg shadow-xl p-10" > {/* Form for user submission */}
             <div className="mb-4">
               <label htmlFor="name">Name:</label>
               <input
                 type="text"
-                name="name"                
-                onChange={handleNewName}               
+                name="name"
+                onChange={handleNewName}
                 className="border border-gray-300 rounded-lg p-2 w-full"
               />
             </div>
@@ -72,8 +52,8 @@ export default function Home() {
               <label htmlFor="id">ID:</label>
               <input
                 type="text"
-                name="id"                                
-                onChange={handleNewId}                
+                name="id"
+                onChange={handleNewId}
                 className="border border-gray-300 rounded-lg p-2 w-full"
               />
             </div>
@@ -82,8 +62,25 @@ export default function Home() {
             </button>
           </form>
         </div>
+        <div className="w-auto">
+          <table className="table-auto border-collapse border border-gray-500 bg-slate-300 rounded-lg shadow-xl"> {/* Table styling */}
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-2 border border-gray-200 text-left">Name</th>
+                <th className="px-4 py-2 border border-gray-200 text-left">ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item) => (
+                <tr key={item.id}>
+                  <td className="px-4 py-2 border border-gray-200">{item.name}</td>
+                  <td className="px-4 py-2 border border-gray-200">{item.id}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    
+    </div>
   );
 }
-
