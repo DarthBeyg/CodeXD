@@ -1,0 +1,10 @@
+{
+    "buildCommand": "pnpm build",
+    "outputDirectory": "out",
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "/api/$1"
+      }
+    ]
+  }
