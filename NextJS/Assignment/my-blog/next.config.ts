@@ -22,10 +22,10 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/studio/:path*',
-        destination: '/studio/tool.html',
+        destination: '/studio/index.html',
       },
     ]
   },
 };
 module.exports = nextConfig
-//export default nextConfig
+export default nextConfig
