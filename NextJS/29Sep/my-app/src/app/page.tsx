@@ -1,9 +1,12 @@
+// Marks this as a client-side component in Next.js
 "use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+
+// Import necessary components and utilities
+import { Button } from "@/components/ui/button"; // Import custom Button component
+import { Input } from "@/components/ui/input"; // Import custom Input component
+import { useForm } from "react-hook-form"; // Import React Hook Form for form handling
+import * as z from "zod"; // Import Zod for form validation
+import { zodResolver } from "@hookform/resolvers/zod"; // Import Zod resolver for React Hook Form
 import {
   Form,
   FormControl,
@@ -11,69 +14,79 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import Link from "next/link";
+} from "@/components/ui/form"; // Import form-related components
+import Link from "next/link"; // Import Next.js Link component for client-side navigation
 
-const formSchema = z.object({ // Define the shape of the form data.
-  email: z.string().email(),  // Email validation
-  password: z.string().min(6),// Password validation
+// Define the form validation schema using Zod
+const formSchema = z.object({
+  email: z.string().email(), // Validate email format
+  password: z.string().min(6), // Ensure password is at least 6 characters
 });
 
-export default function Home() { // Functional component Home that renders the login form.
-  const form = useForm<z.infer<typeof formSchema>>({ // Define the form using the useForm hook.
-    resolver: zodResolver(formSchema), // Use the zodResolver to validate the form data.
-    defaultValues: { // Set the default values for the form.
-      email: "",
-      password: "",
+// Main component for the login page
+export default function Home() {
+  // Initialize form with React Hook Form and Zod validation
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema), // Connect Zod validation schema
+    defaultValues: {
+      email: "", // Initialize email field as empty
+      password: "", // Initialize password field as empty
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => { // Define the onSubmit function.
+  // Handle form submission
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      // API call to login
-      await fetch("/api/login", { // Send a POST request to the login API endpoint.
-        method: "POST",
-        body: JSON.stringify(data),
-        cache: "no-store",
+      // Send login data to the server
+      await fetch("/api/login", {
+        method: "POST", // Use POST method for login
+        body: JSON.stringify(data), // Convert form data to JSON
+        cache: "no-store", // Disable caching for this request
       });
     } catch (err) {
-      console.log("🚀 ~ onSubmit ~ err:", err);
+      console.log("🚀 ~ onSubmit ~ err:", err); // Log any errors during submission
     }
   };
 
   return (
-    <div className="grid  items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    // Main container with responsive grid layout
+    <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      {/* Login form container with styling */}
       <div className="border p-5 min-w-96 bg-slate-50 rounded-md">
+        {/* Login heading */}
         <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight lg:text-2xl text-center">
           Login
         </h1>
-        <Form {...form}> {/* Render the form. */}
+        {/* Form component from shadcn/ui */}
+        <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)} // Handle form submission.
-            className="flex gap-5 w-full flex-col py-5" 
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex gap-5 w-full flex-col py-5"
           >
-            <FormField // Render the form fields.
+            {/* Email field */}
+            <FormField
               name="email"
-              control={form.control} // Pass the form control to the FormField.
-              render={({ field }) => ( // Render the form field.
-                <FormItem> 
-                  <FormLabel>Email</FormLabel>  {/* Label for the form field. */}
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Email"
                       type="email"
                       className="w-full"
-                      {...field}  //Pass the form field to the Input component. 
+                      {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage /> {/* Display validation errors for email */}
                 </FormItem>
               )}
             />
+            {/* Password field */}
             <FormField
               name="password"
-              control={form.control} // Pass the form control to the FormField.
-              render={({ field }) => ( // Render the form field.
+              control={form.control}
+              render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
@@ -81,19 +94,21 @@ export default function Home() { // Functional component Home that renders the l
                       placeholder="Password"
                       type="password"
                       className="w-full"
-                      {...field} // Pass the form field to the Input component.
+                      {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage /> {/* Display validation errors for password */}
                 </FormItem>
               )}
             />
+            {/* Registration link */}
             <Link
               href={"/register"}
               className="text-blue-500 text-sm text-right"
             >
               Don&apos;t have account? Register here..
             </Link>
+            {/* Submit button */}
             <Button type="submit">Login</Button>
           </form>
         </Form>
