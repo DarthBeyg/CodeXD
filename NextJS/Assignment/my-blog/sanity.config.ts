@@ -26,5 +26,11 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  cors: {
+    origin: [
+      'http://localhost:3000',
+      'https://volks-blog.vercel.app',
+    ],
+  }
   
 })
