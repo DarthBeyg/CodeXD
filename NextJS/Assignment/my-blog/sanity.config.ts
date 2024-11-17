@@ -21,7 +21,7 @@ export default defineConfig({
   basePath: '/studio',
   projectId: 'nj8tbh7j',
   dataset: 'production',
-  apiVersion: '2024-11-10',
+  apiVersion: '2024-01-24',
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [
@@ -35,7 +35,10 @@ export default defineConfig({
     origin: [
       'http://localhost:3000',
       'https://volks-blog.vercel.app',
+      'https://*.vercel.app',
+      'https://volks-blog-*.vercel.app'
     ],
+    credentials: true
   }
   
 })
