@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/studio/:path*',
-        destination: '/studio/index.html',
+        destination: '/studio',
       },
     ]
   },
