@@ -72,7 +72,7 @@ export default function Home() {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Email"
+                      placeholder="Enter Email"
                       type="email"
                       className="w-full"
                       {...field}
@@ -91,7 +91,7 @@ export default function Home() {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Password"
+                      placeholder="Set Password"
                       type="password"
                       className="w-full"
                       {...field}

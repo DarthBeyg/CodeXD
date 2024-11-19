@@ -28,7 +28,7 @@ import {
 const formSchema = z.object({
   email: z.string().email(), // Must be a valid email format
   password: z.string().min(6), // Password must be at least 6 characters
-  role: z.string().min(4), // Role must be at least 4 characters
+  role: z.string(), // Role must be at least 4 characters
 });
 
 // Main Register component
@@ -120,11 +120,11 @@ export default function Register() {
                 <FormItem>
                   <FormLabel>Role</FormLabel>
                   <FormControl>
-                    <Select>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <SelectTrigger>
                         <SelectValue placeholder="Role" />
                       </SelectTrigger>
-                      <SelectContent {...field}>
+                      <SelectContent>
                         {/* Available role options */}
                         <SelectItem value="admin">Admin</SelectItem>
                         <SelectItem value="user">User</SelectItem>
