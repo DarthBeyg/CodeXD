@@ -1,4 +1,6 @@
 api data validation. we will use zod schema for it.
+youtube vid: https://www.youtube.com/watch?v=tKkL6vp9tZI&t=2407s
+
 
 relational databases are writtent in sql
 search about primary key, foreign key, composite key, unique key, indexes in dbs

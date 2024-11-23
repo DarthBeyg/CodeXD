@@ -28,7 +28,7 @@ import {
 const formSchema = z.object({
   email: z.string().email(), // Must be a valid email format
   password: z.string().min(6), // Password must be at least 6 characters
-  role: z.string(), // Role must be at least 4 characters
+  role: z.string().min(4), // Role must be at least 4 characters
 });
 
 // Main Register component
