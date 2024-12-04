@@ -21,5 +21,5 @@ you create schema so there's a protocol to validate in terms of requirements for
 and is password atleast 6 chracters?
 to validate schema shadcn uses react hook form
  in api calling u use try/catch
- in our codebase for 29Sep we onlydid schema/form validation for frontend. i.e where users put the data. we didn't do it for back-end i.e where devs might send put requests from POstman. How ever Sir did it in their video. 
+ in our codebase for 29Sep we onlydid schema/form validation for frontend. i.e where users put the data. we didn't do it for back-end i.e where devs might send put requests from POstman.(api validation) How ever Sir did it in their video. 
  https://www.youtube.com/watch?v=tKkL6vp9tZI&t=2407s
