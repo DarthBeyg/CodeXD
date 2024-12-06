@@ -1,1 +1,2 @@
 i have created a nextjs 15 app @/NextJS/test/ make this a landing page for air conditioning services business based in dubai. don't forget to check the configurations of project first.
+the header at the top has white background on the spacing you gave it. on top, left and right. whereas i want each section to get that space. header just hovers over each section independantly
