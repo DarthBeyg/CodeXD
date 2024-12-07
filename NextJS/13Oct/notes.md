@@ -19,10 +19,19 @@ after that link register page of api-routing with all this
                                             make the project connect with drizzle 
 
 1. "pnpm add react-hook-form zod @hookform/resolvers" for react hook form and zod OR "pnpm dlx shadcn@latest add form" to handle with shadcn 
-    as later we will use shadcn for form and other components.
+    as later we will use shadcn for form and other components
 2. "pnpm dlx shadcn@latest add select" for select
 3. "pnpm dlx shadcn@latest add input" for input                    (Both of these are for form related components) 
-4. 
+4. Create F.E in main page.tsx file and add the form to it
+5. Define the form validation schema using Zod
+6. Initialize form with React Hook Form and Zod validation in Home Function
+7. Create a submit handler for the form before return.
+9. This will await the data from the form and send it to the server
+10. For that create a route handler in api folder. i.e Api routes
+11. Create a login route handler in api folder
+12. Create a register route handler in api folder
+13. Create a status route handler in api folder
+14. Create a hello route handler in api folder
  
  
 
