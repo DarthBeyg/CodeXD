@@ -1,4 +1,4 @@
-
+'use client';
 // Import necessary components and utilities
 import { Button } from "@/components/ui/button"; // Import custom Button component
 import { Input } from "@/components/ui/input"; // Import custom Input component
