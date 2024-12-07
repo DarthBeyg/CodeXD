@@ -15,3 +15,14 @@ step6 will give error about url not found in .env so in drizzle.config you can t
 
 after that link register page of api-routing with all this
 
+     7/12/24                                make the project connect with supabase
+                                            make the project connect with drizzle 
+
+1. "pnpm add react-hook-form zod @hookform/resolvers" for react hook form and zod OR "pnpm dlx shadcn@latest add form" to handle with shadcn 
+    as later we will use shadcn for form and other components.
+2. "pnpm dlx shadcn@latest add select" for select
+3. "pnpm dlx shadcn@latest add input" for input                    (Both of these are for form related components) 
+4. 
+ 
+ 
+
