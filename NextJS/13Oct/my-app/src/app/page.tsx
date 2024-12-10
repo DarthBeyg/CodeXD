@@ -47,7 +47,7 @@ const onSubmit = async (data: z.infer<typeof formSchema>) => {
 
   return (
     // Main container with responsive grid layout
-    <div className="grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid items-center justify-items-center min-h-screen bg-zinc-700 p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {/* Login form container with styling */}
       <div className="border p-5 min-w-96 bg-slate-50 rounded-md">
         {/* Login heading */}
