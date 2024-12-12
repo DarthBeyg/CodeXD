@@ -38,7 +38,7 @@ after that link register page of api-routing with all this
 18. step 4 create schema.ts in db folder. it's a schema for drizzle. you can use default one or you can create a custom one with ai
 19. step 5 create drizzle.config.ts and copy the code from drizzle
 20. step 6 either drizzle kit push (pnpm drizzle-kit@latest push) then drizzle kit generate(pnpm drizzle-kit@latest generate) then migrate 
-21. 
+21. insert the fetch call into db which in our case is supa base. i have done it in api routing route.ts for register route. line 15 & 16
  
  
 
